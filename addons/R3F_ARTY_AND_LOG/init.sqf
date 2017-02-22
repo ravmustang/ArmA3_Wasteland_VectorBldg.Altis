@@ -48,6 +48,21 @@
 			_objet setPos (getPos _objet);
 		};
 		"R3F_ARTY_AND_LOG_PUBVAR_setDir" addPublicVariableEventHandler R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDir;
+		
+		R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDirAndUp =
+		{
+			private ["_objet", "_attachedTo", "_newDirAndUp", "_buildPosX", "_buildPosY", "_buildPosZ"];
+			_objet = _this select 1 select 0;
+			_attachedTo = _this select 1 select 1;
+			_newDirAndUp = _this select 1 select 2;
+			_buildPosX = _this select 1 select 3;
+			_buildPosY =_this select 1 select 4;
+			_buildPosZ =_this select 1 select 5;
+			
+			_objet attachTo [_attachedTo,[_buildPosX,_buildPosY,_buildPosZ]];
+			_objet setVectorDirAndUp _newDirAndUp;
+		};
+		"R3F_ARTY_AND_LOG_PUBVAR_setDirAndUp" addPublicVariableEventHandler R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDirAndUp;
 	};
 
 	#ifdef R3F_ARTY_enable

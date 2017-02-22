@@ -138,6 +138,8 @@ vehicleDammagedEvent = [_serverFunc, "vehicleDammagedEvent.sqf"] call mf_compile
 vehicleEngineEvent = [_serverFunc, "vehicleEngineEvent.sqf"] call mf_compile;
 vehicleHandleDamage = [_serverFunc, "vehicleHandleDamage.sqf"] call mf_compile;
 vehicleHitTracking = [_serverFunc, "vehicleHitTracking.sqf"] call mf_compile;
+A3W_fnc_eXpochVectorBuilding = [_clientFunc, "fn_eXpochVectorBuilding.sqf"] call mf_compile;
+A3W_fnc_eXpochVectorDirandUp = [_clientFunc, "fn_eXpochVectorDirandUp.sqf"] call mf_compile;
 
 call compile preprocessFileLineNumbers "server\functions\mf_remote.sqf";
 
