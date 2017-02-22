@@ -26,7 +26,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 3;};
 				if(_ctrl)then{_adjust = 0.5;};
 				if(_alt)then{	_adjust = 0.25;};
-				BuildVecYaw = BuildVecYaw - _adjust;
+				BuildVecYaw = (((BuildVecYaw - _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -36,7 +36,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 3;};
 				if(_ctrl)then{_adjust = 0.5;};
 				if(_alt)then{	_adjust = 0.25;};
-				BuildVecYaw = BuildVecYaw + _adjust;
+				BuildVecYaw = (((BuildVecYaw + _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -46,7 +46,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 3;};
 				if(_ctrl)then{_adjust = 0.5;};
 				if(_alt)then{	_adjust = 0.25;};
-				BuildVecYaw = BuildVecYaw - _adjust;
+				BuildVecYaw = (((BuildVecYaw - _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -56,7 +56,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 3;};
 				if(_ctrl)then{_adjust = 0.5;};
 				if(_alt)then{	_adjust = 0.25;};
-				BuildVecYaw = BuildVecYaw + _adjust;
+				BuildVecYaw = (((BuildVecYaw + _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -66,7 +66,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosZ = BuildPosZ + _adjust;
+				BuildPosZ = (((BuildPosZ + _adjust)min 10) max -3);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -76,7 +76,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosZ = BuildPosZ - _adjust;
+				BuildPosZ = (((BuildPosZ - _adjust)min 10) max -3);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -86,7 +86,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosY = BuildPosY + _adjust;
+				BuildPosY = (((BuildPosY + _adjust)min 10) max 2);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -96,7 +96,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosY = BuildPosY - _adjust;
+				BuildPosY = (((BuildPosY - _adjust)min 10) max 2);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -106,7 +106,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosY = BuildPosY + _adjust;
+				BuildPosY = (((BuildPosY + _adjust)min 10) max 2);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -116,7 +116,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosY = BuildPosY - _adjust;
+				BuildPosY = (((BuildPosY - _adjust)min 10) max 2);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -126,7 +126,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosX = BuildPosX - _adjust;
+				BuildPosX = (((BuildPosX - _adjust)min 5) max -5);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -136,7 +136,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosX = BuildPosX + _adjust;
+				BuildPosX = (((BuildPosX + _adjust)min 5) max -5);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -145,7 +145,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildVecPitch = BuildVecPitch + _adjust;
+				BuildVecPitch = (((BuildVecPitch + _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -154,7 +154,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildVecPitch = BuildVecPitch - _adjust;
+				BuildVecPitch = (((BuildVecPitch - _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -163,7 +163,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildVecRoll = BuildVecRoll - _adjust;
+				BuildVecRoll = (((BuildVecRoll - _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -172,7 +172,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildVecRoll = BuildVecRoll + _adjust;
+				BuildVecRoll = (((BuildVecRoll + _adjust)min 360) max -360);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
