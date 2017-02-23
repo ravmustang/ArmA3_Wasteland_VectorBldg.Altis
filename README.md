@@ -1,7 +1,20 @@
 # ArmA3_Wasteland_VectorBldg.Altis
 
+##Buttons to use
+	{
+	Shift = Fastest stepping
+	Ctrl = Step Down 
+	Alt = Precision stepping
+
+	Keys Q and E as well as NUM7 and NUM9 will rotate the object
+	Keys PageUP and PageDOWN take care of Height of the object
+	Keys Home and END as well as NUM8 and NUM2 will move the object farther and closer
+	Keys NUM4 and NUM6 will move the object left and right
+	Keys NUM5 as well as BACKSPACE will reset the object to a [0,5,2] attachment point
+	Key NUM0 while looking at a built object will prompt you to SNAP
+	}
 ## Installation
-These files modify the original R3F built into A3Wasteland as of February 22, 2017.
+These files modify the original A3Wasteland and R3F as of February 22, 2017.
 Merge these files into your mission.
 ####.
 
