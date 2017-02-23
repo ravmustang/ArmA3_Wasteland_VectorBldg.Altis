@@ -1,0 +1,7 @@
+//Add this section to the bottom of your description.ext file
+
+class CfgBaseBuilding
+{
+	// Beacon based limits
+	BasePieceLimit = 20;
+};
