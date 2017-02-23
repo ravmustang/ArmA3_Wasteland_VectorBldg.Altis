@@ -274,24 +274,29 @@ keyUpEHId = (findDisplay 46) displayAddEventHandler ["KeyUp", {
 				_handled = true;
 			};
 			case 82: {
-				if(R3FObjAttachedTo isEqualTo player)then
+				if((typeOf cursorObject) in R3F_LOG_CFG_objets_deplacables)then
 				{
-					[]spawn
+					if(R3FObjAttachedTo isEqualTo player)then
 					{
-						disableSerialization;
-						_result = ["Do you really want to snap to this object?", "Confirm", "Yes", "Nah"] call BIS_fnc_guiMessage;
-						waitUntil { !isNil "_result" };
-						if (_result) then
+						[]spawn
 						{
-							BuildPosX = 0;BuildPosY = 0;BuildPosZ = 2;BuildVecYaw = 0;BuildVecPitch = 0;BuildVecRoll = 0;
-							R3FObjAttachedTo = cursorObject;
-							[R3F_LOG_joueur_deplace_objet,true] call A3W_fnc_eXpochVectorDirandUp;
+							disableSerialization;
+							_result = ["Do you really want to snap to this object?", "Confirm", "Yes", "Nah"] call BIS_fnc_guiMessage;
+							waitUntil { !isNil "_result" };
+							if (_result) then
+							{
+								BuildPosX = 0;BuildPosY = 0;BuildPosZ = 2;BuildVecYaw = 0;BuildVecPitch = 0;BuildVecRoll = 0;
+								R3FObjAttachedTo = cursorObject;
+								[R3F_LOG_joueur_deplace_objet,true] call A3W_fnc_eXpochVectorDirandUp;
+							};
 						};
+					}else{
+						R3FObjAttachedTo = player;
+						BuildPosX = 0;BuildPosY = 5;BuildPosZ = 2;BuildVecYaw = 0;BuildVecPitch = 0;BuildVecRoll = 0;
+						[R3F_LOG_joueur_deplace_objet,true] call A3W_fnc_eXpochVectorDirandUp;
 					};
 				}else{
-					R3FObjAttachedTo = player;
-					BuildPosX = 0;BuildPosY = 5;BuildPosZ = 2;BuildVecYaw = 0;BuildVecPitch = 0;BuildVecRoll = 0;
-					[R3F_LOG_joueur_deplace_objet,true] call A3W_fnc_eXpochVectorDirandUp;
+					[format ["You can only snap to movable objects, not %1", getText(configFile >> "CfgVehicles" >> typeOf cursorObject >> "displayName")], 5] call mf_notify_client;
 				};
 				_handled = true;
 			};
