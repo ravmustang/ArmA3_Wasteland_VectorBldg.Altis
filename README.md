@@ -76,3 +76,85 @@ Merge these files into your mission.
 #### Add this to Line 213
       R3F_LOG_joueur_deplace_objet = objNull;R3FObjAttachedTo = objNull;
 			BuildPosX = 0;BuildPosY = 5;BuildPosZ = 0;BuildVecYaw = 0;BuildVecPitch = 0;BuildVecRoll = 0;
+
+## Base Piece Limits Installation
+## 5. Add this to the end of your description.ext in the mission file
+####
+	  class CfgBaseBuilding
+			{
+				// Beacon based limits
+				BasePieceLimit = 20;
+			};
+
+## 6. Changes to "missionFile >> addons >> R3F_ARTY_AND_LOG >> R3F_LOG >> objet_deplacable >> objectLockStateMachine.sqf"
+#### Many changes were made to this file and it is suggested to just replace the old file with this new file
+## 6a.
+#### Add this at approx Line 40-41
+	_basePartLimits = getNumber(missionConfigFile >> "CfgBaseBuilding" >> "BasePieceLimit");
+		if((missionNameSpace getVariable["WastelandBasePieces" + (getPlayerUID player),0]) >= _basePartLimits)exitWith
+		{
+			playSound "FD_CP_Not_Clear_F";
+			[format ["You are not allowed to lock more than %1 objects at your base", _basePartLimits], 5] call mf_notify_client;
+			R3F_LOG_mutex_local_verrou = false;
+		};
+## 6b.
+#### This section at line 75
+	if (_success) then
+		{
+			_object setVariable ["objectLocked", true, true];
+			_object setVariable ["ownerUID", getPlayerUID player, true];
+
+			pvar_manualObjectSave = netId _object;
+			publicVariableServer "pvar_manualObjectSave";
+
+			["Object locked!", 5] call mf_notify_client;
+		};
+#### Becomes
+	if (_success) then
+		{
+			_object setVariable ["objectLocked", true, true];
+			_object setVariable ["ownerUID", getPlayerUID player, true];
+			
+			_baseNameSpace = "WastelandBasePieces" + (getPlayerUID player);
+			_baseParts = missionNameSpace getVariable[_baseNameSpace,0];
+			_baseParts = _baseParts + 1;
+			missionNameSpace setVariable[_baseNameSpace,_baseParts,true];
+
+			pvar_manualObjectSave = netId _object;
+			publicVariableServer "pvar_manualObjectSave";
+
+			["Object locked!", 5] call mf_notify_client;
+		};
+			
+## 6c.
+#### This section at line 161
+	if (_success) then
+		{
+			_object setVariable ["objectLocked", false, true];
+			_object setVariable ["ownerUID", nil, true];
+			_object setVariable ["baseSaving_hoursAlive", nil, true];
+			_object setVariable ["baseSaving_spawningTime", nil, true];
+
+			pvar_manualObjectSave = netId _object;
+			publicVariableServer "pvar_manualObjectSave";
+
+			["Object unlocked!", 5] call mf_notify_client;
+		};
+#### Becomes
+	if (_success) then
+		{
+			_object setVariable ["objectLocked", false, true];
+			_object setVariable ["ownerUID", nil, true];
+			_object setVariable ["baseSaving_hoursAlive", nil, true];
+			_object setVariable ["baseSaving_spawningTime", nil, true];
+
+			_baseNameSpace = "WastelandBasePieces" + (getPlayerUID player);
+			_baseParts = missionNameSpace getVariable[_baseNameSpace,0];
+			_baseParts = _baseParts - 1;
+			missionNameSpace setVariable[_baseNameSpace,_baseParts,true];
+			
+			pvar_manualObjectSave = netId _object;
+			publicVariableServer "pvar_manualObjectSave";
+
+			["Object unlocked!", 5] call mf_notify_client;
+		};
