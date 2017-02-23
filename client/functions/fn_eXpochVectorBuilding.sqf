@@ -66,7 +66,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosZ = (((BuildPosZ + _adjust)min 10) max -3);
+				BuildPosZ = (((BuildPosZ + _adjust)min 10) max 0);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
@@ -76,7 +76,7 @@ keyDownEHId = (findDisplay 46) displayAddEventHandler ["KeyDown", {
 				if(_shift)then{_adjust = 1.5;};
 				if(_ctrl)then{_adjust = 0.1;};
 				if(_alt)then{	_adjust = 0.01;};
-				BuildPosZ = (((BuildPosZ - _adjust)min 10) max -3);
+				BuildPosZ = (((BuildPosZ - _adjust)min 10) max 0);
 				[R3F_LOG_joueur_deplace_objet,false] call A3W_fnc_eXpochVectorDirandUp;
 				_handled = true;
 			};
