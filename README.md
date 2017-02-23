@@ -172,8 +172,6 @@ Merge these files into your mission.
 			["Object unlocked!", 5] call mf_notify_client;
 		};
 ## 7. Changes to "missionFile >> persistence >> server >> world >> oLoad.sqf"
-#### Many changes were made to this file and it is suggested to just replace the old file with this new file
-## 6a.
 #### This section at approx line 88
 	if (!isNil "_owner") then
 		{
